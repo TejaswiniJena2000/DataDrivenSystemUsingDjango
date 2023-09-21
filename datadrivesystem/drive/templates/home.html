@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Folders</h2>
+
+    <ul>
+        {% for folder in folders %}
+        <li>
+            <h3>{{ folder.name }}</h3>
+            <p>Created: {{ folder.created_at }}</p>
+
+            <!-- View Folder Button -->
+            <a href="{% url 'view_folder' folder.id %}" class="btn btn-primary">View</a>
+
+            <!-- Edit Folder Button -->
+            <a href="{% url 'edit_folder' folder.id %}" class="btn btn-secondary">Edit</a>
+
+            <!-- Delete Folder Button -->
+            <form method="post" action="{% url 'delete_folder' folder.id %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this folder?')">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'create_folder' %}" class="btn btn-success">Create Folder</a>
+</div>
+{% endblock %}

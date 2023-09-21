@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome, {{ user.username }}</h2>
+
+    <p>Email: {{ user.email }}</p>
+    <!-- You can also add links to edit the user's profile or perform other actions -->
+    <a href="{% url 'edit_profile' %}">Edit Profile</a>
+    <!-- Replace 'edit_profile' with the name of your edit profile view -->
+
+    <!-- Add other content as needed -->
+
+</div>
+{% endblock %}

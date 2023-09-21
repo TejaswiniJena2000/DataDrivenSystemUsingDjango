@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>List of Folders</h2>
+
+    <ul>
+        {% for folder in folders %}
+        <li>
+            <a href="{% url 'view_folder' folder.id %}">{{ folder.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
